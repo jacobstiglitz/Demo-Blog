@@ -1,0 +1,31 @@
+<h1>Cristal's Blog</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Content</th>
+	<th>Comments</th>
+	<th>Tags</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destory</th>
+  </tr>
+
+<% @posts.each do |p| %>
+  <tr>
+    <td><%= p.name %></td>
+    <td><%= p.title %></td>
+    <td><%= p.content %></td>
+	<td><%= join_comments(p) %></td>
+	<td><%= join_tags(p) %></td>
+    <td><%= link_to 'o', p %></td>
+    <td><%= link_to 'e', edit_post_path(p) %></td>
+    <td><%= link_to 'x', p, :confirm => 'Are you sure you want to delete this post?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Post', new_post_path %>
